@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVisitorsTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVisitorsTableLabel_visitorid}"/>
+                    <h:outputText value="#{visitorsTableController.selected.visitorid}" title="#{bundle.ViewVisitorsTableTitle_visitorid}"/>
+                    <h:outputText value="#{bundle.ViewVisitorsTableLabel_vfirstname}"/>
+                    <h:outputText value="#{visitorsTableController.selected.vfirstname}" title="#{bundle.ViewVisitorsTableTitle_vfirstname}"/>
+                    <h:outputText value="#{bundle.ViewVisitorsTableLabel_vlastname}"/>
+                    <h:outputText value="#{visitorsTableController.selected.vlastname}" title="#{bundle.ViewVisitorsTableTitle_vlastname}"/>
+                    <h:outputText value="#{bundle.ViewVisitorsTableLabel_vphonenum}"/>
+                    <h:outputText value="#{visitorsTableController.selected.vphonenum}" title="#{bundle.ViewVisitorsTableTitle_vphonenum}"/>
+                    <h:outputText value="#{bundle.ViewVisitorsTableLabel_vpartynum}"/>
+                    <h:outputText value="#{visitorsTableController.selected.vpartynum}" title="#{bundle.ViewVisitorsTableTitle_vpartynum}"/>
+                    <h:outputText value="#{bundle.ViewVisitorsTableLabel_payment}"/>
+                    <h:outputText value="#{visitorsTableController.selected.payment}" title="#{bundle.ViewVisitorsTableTitle_payment}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{visitorsTableController.destroyAndView}" value="#{bundle.ViewVisitorsTableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVisitorsTableEditLink}"/>
+                <br />
+                <h:commandLink action="#{visitorsTableController.prepareCreate}" value="#{bundle.ViewVisitorsTableCreateLink}" />
+                <br />
+                <h:commandLink action="#{visitorsTableController.prepareList}" value="#{bundle.ViewVisitorsTableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVisitorsTableIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

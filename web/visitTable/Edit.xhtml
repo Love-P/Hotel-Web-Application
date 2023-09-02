@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVisitTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_visitid}" for="visitid" />
+                    <h:inputText id="visitid" value="#{visitTableController.selected.visitid}" title="#{bundle.EditVisitTableTitle_visitid}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_visitid}"/>
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_visitorid}" for="visitorid" />
+                    <h:inputText id="visitorid" value="#{visitTableController.selected.visitorid}" title="#{bundle.EditVisitTableTitle_visitorid}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_visitorid}"/>
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_employeeid}" for="employeeid" />
+                    <h:inputText id="employeeid" value="#{visitTableController.selected.employeeid}" title="#{bundle.EditVisitTableTitle_employeeid}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_employeeid}"/>
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_roomid}" for="roomid" />
+                    <h:inputText id="roomid" value="#{visitTableController.selected.roomid}" title="#{bundle.EditVisitTableTitle_roomid}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_roomid}"/>
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_checkindatetime}" for="checkindatetime" />
+                    <h:inputText id="checkindatetime" value="#{visitTableController.selected.checkindatetime}" title="#{bundle.EditVisitTableTitle_checkindatetime}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_checkindatetime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_checkoutdatetime}" for="checkoutdatetime" />
+                    <h:inputText id="checkoutdatetime" value="#{visitTableController.selected.checkoutdatetime}" title="#{bundle.EditVisitTableTitle_checkoutdatetime}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_checkoutdatetime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_roomnum}" for="roomnum" />
+                    <h:inputText id="roomnum" value="#{visitTableController.selected.roomnum}" title="#{bundle.EditVisitTableTitle_roomnum}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_roomnum}"/>
+                    <h:outputLabel value="#{bundle.EditVisitTableLabel_reservation}" for="reservation" />
+                    <h:inputText id="reservation" value="#{visitTableController.selected.reservation}" title="#{bundle.EditVisitTableTitle_reservation}" required="true" requiredMessage="#{bundle.EditVisitTableRequiredMessage_reservation}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{visitTableController.update}" value="#{bundle.EditVisitTableSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVisitTableViewLink}"/>
+                <br />
+                <h:commandLink action="#{visitTableController.prepareList}" value="#{bundle.EditVisitTableShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVisitTableIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

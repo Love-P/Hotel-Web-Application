@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVisitTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_visitid}"/>
+                    <h:outputText value="#{visitTableController.selected.visitid}" title="#{bundle.ViewVisitTableTitle_visitid}"/>
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_visitorid}"/>
+                    <h:outputText value="#{visitTableController.selected.visitorid}" title="#{bundle.ViewVisitTableTitle_visitorid}"/>
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_employeeid}"/>
+                    <h:outputText value="#{visitTableController.selected.employeeid}" title="#{bundle.ViewVisitTableTitle_employeeid}"/>
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_roomid}"/>
+                    <h:outputText value="#{visitTableController.selected.roomid}" title="#{bundle.ViewVisitTableTitle_roomid}"/>
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_checkindatetime}"/>
+                    <h:outputText value="#{visitTableController.selected.checkindatetime}" title="#{bundle.ViewVisitTableTitle_checkindatetime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_checkoutdatetime}"/>
+                    <h:outputText value="#{visitTableController.selected.checkoutdatetime}" title="#{bundle.ViewVisitTableTitle_checkoutdatetime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_roomnum}"/>
+                    <h:outputText value="#{visitTableController.selected.roomnum}" title="#{bundle.ViewVisitTableTitle_roomnum}"/>
+                    <h:outputText value="#{bundle.ViewVisitTableLabel_reservation}"/>
+                    <h:outputText value="#{visitTableController.selected.reservation}" title="#{bundle.ViewVisitTableTitle_reservation}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{visitTableController.destroyAndView}" value="#{bundle.ViewVisitTableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVisitTableEditLink}"/>
+                <br />
+                <h:commandLink action="#{visitTableController.prepareCreate}" value="#{bundle.ViewVisitTableCreateLink}" />
+                <br />
+                <h:commandLink action="#{visitTableController.prepareList}" value="#{bundle.ViewVisitTableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVisitTableIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

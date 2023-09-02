@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVisitorsTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVisitorsTableEmpty}" rendered="#{visitorsTableController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{visitorsTableController.items.rowCount > 0}">
+                    <h:outputText value="#{visitorsTableController.pagination.pageFirstItem + 1}..#{visitorsTableController.pagination.pageLastItem + 1}/#{visitorsTableController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{visitorsTableController.previous}" value="#{bundle.Previous} #{visitorsTableController.pagination.pageSize}" rendered="#{visitorsTableController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{visitorsTableController.next}" value="#{bundle.Next} #{visitorsTableController.pagination.pageSize}" rendered="#{visitorsTableController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{visitorsTableController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitorsTableTitle_visitorid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.visitorid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitorsTableTitle_vfirstname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vfirstname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitorsTableTitle_vlastname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vlastname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitorsTableTitle_vphonenum}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vphonenum}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitorsTableTitle_vpartynum}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vpartynum}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitorsTableTitle_payment}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.payment}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{visitorsTableController.prepareView}" value="#{bundle.ListVisitorsTableViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{visitorsTableController.prepareEdit}" value="#{bundle.ListVisitorsTableEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{visitorsTableController.destroy}" value="#{bundle.ListVisitorsTableDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{visitorsTableController.prepareCreate}" value="#{bundle.ListVisitorsTableCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVisitorsTableIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

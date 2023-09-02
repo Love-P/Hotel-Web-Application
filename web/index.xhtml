@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Hotel Management System</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <style>
+        </style>
+        <Center>
+            <h1 style="color: #66fcf1; border:2px solid pink; font-family:monospace; font-size:50px"> Hotel Management System</h1>
+            <h2 style="color: #66fcf1; border:1px solid pink; font-family:monospace; font-size:30px"> Welcome Employee!</h2>
+            <hr></hr>
+            <video controls = "" width = "584px" height = "480px" autoplay="" loop="" muted="">
+                <source src ="resources/viideo.mp4" type ="video/mp4"> </source>
+            </video>
+            
+        <h2 style="color : #69fcf6; font-family:monospace;">What would you like to do Today?</h2>
+        <br />
+        <h:link style="color: pink; text-decoration: underline; font-family:monospace; position:relative; background-color:transparent" outcome="/employeesTable/List" value="View All Employees"/>
+        <br />
+        <h:link style="color: pink; text-decoration: underline; font-family:monospace; position:relative;background-color:transparent" outcome="/roomsTable/List" value="View All Rooms"/>
+        <br />
+        <h:link style="color: pink; text-decoration: underline; font-family:monospace; position:relative; background-color:transparent" outcome="/visitTable/List" value="View All Visit Logs"/>
+        <br />
+        <h:link style="color: pink; text-decoration: underline; font-family:monospace; position:relative;  background-color:transparent" outcome="/visitorsTable/List" value="Show All Visitors"/>
+        </Center>
+    </h:body>
+</html>
+
+

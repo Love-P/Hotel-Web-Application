@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVisitorsTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVisitorsTableLabel_visitorid}" for="visitorid" />
+                    <h:inputText id="visitorid" value="#{visitorsTableController.selected.visitorid}" title="#{bundle.EditVisitorsTableTitle_visitorid}" required="true" requiredMessage="#{bundle.EditVisitorsTableRequiredMessage_visitorid}"/>
+                    <h:outputLabel value="#{bundle.EditVisitorsTableLabel_vfirstname}" for="vfirstname" />
+                    <h:inputText id="vfirstname" value="#{visitorsTableController.selected.vfirstname}" title="#{bundle.EditVisitorsTableTitle_vfirstname}" required="true" requiredMessage="#{bundle.EditVisitorsTableRequiredMessage_vfirstname}"/>
+                    <h:outputLabel value="#{bundle.EditVisitorsTableLabel_vlastname}" for="vlastname" />
+                    <h:inputText id="vlastname" value="#{visitorsTableController.selected.vlastname}" title="#{bundle.EditVisitorsTableTitle_vlastname}" required="true" requiredMessage="#{bundle.EditVisitorsTableRequiredMessage_vlastname}"/>
+                    <h:outputLabel value="#{bundle.EditVisitorsTableLabel_vphonenum}" for="vphonenum" />
+                    <h:inputText id="vphonenum" value="#{visitorsTableController.selected.vphonenum}" title="#{bundle.EditVisitorsTableTitle_vphonenum}" required="true" requiredMessage="#{bundle.EditVisitorsTableRequiredMessage_vphonenum}"/>
+                    <h:outputLabel value="#{bundle.EditVisitorsTableLabel_vpartynum}" for="vpartynum" />
+                    <h:inputText id="vpartynum" value="#{visitorsTableController.selected.vpartynum}" title="#{bundle.EditVisitorsTableTitle_vpartynum}" required="true" requiredMessage="#{bundle.EditVisitorsTableRequiredMessage_vpartynum}"/>
+                    <h:outputLabel value="#{bundle.EditVisitorsTableLabel_payment}" for="payment" />
+                    <h:inputText id="payment" value="#{visitorsTableController.selected.payment}" title="#{bundle.EditVisitorsTableTitle_payment}" required="true" requiredMessage="#{bundle.EditVisitorsTableRequiredMessage_payment}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{visitorsTableController.update}" value="#{bundle.EditVisitorsTableSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVisitorsTableViewLink}"/>
+                <br />
+                <h:commandLink action="#{visitorsTableController.prepareList}" value="#{bundle.EditVisitorsTableShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVisitorsTableIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

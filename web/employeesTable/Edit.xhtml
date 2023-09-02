@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmployeesTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmployeesTableLabel_employeeid}" for="employeeid" />
+                    <h:inputText id="employeeid" value="#{employeesTableController.selected.employeeid}" title="#{bundle.EditEmployeesTableTitle_employeeid}" required="true" requiredMessage="#{bundle.EditEmployeesTableRequiredMessage_employeeid}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeesTableLabel_efirstname}" for="efirstname" />
+                    <h:inputText id="efirstname" value="#{employeesTableController.selected.efirstname}" title="#{bundle.EditEmployeesTableTitle_efirstname}" required="true" requiredMessage="#{bundle.EditEmployeesTableRequiredMessage_efirstname}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeesTableLabel_elastname}" for="elastname" />
+                    <h:inputText id="elastname" value="#{employeesTableController.selected.elastname}" title="#{bundle.EditEmployeesTableTitle_elastname}" required="true" requiredMessage="#{bundle.EditEmployeesTableRequiredMessage_elastname}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeesTableLabel_ephonenum}" for="ephonenum" />
+                    <h:inputText id="ephonenum" value="#{employeesTableController.selected.ephonenum}" title="#{bundle.EditEmployeesTableTitle_ephonenum}" required="true" requiredMessage="#{bundle.EditEmployeesTableRequiredMessage_ephonenum}"/>
+                    <h:outputLabel value="#{bundle.EditEmployeesTableLabel_eposition}" for="eposition" />
+                    <h:inputText id="eposition" value="#{employeesTableController.selected.eposition}" title="#{bundle.EditEmployeesTableTitle_eposition}" required="true" requiredMessage="#{bundle.EditEmployeesTableRequiredMessage_eposition}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{employeesTableController.update}" value="#{bundle.EditEmployeesTableSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmployeesTableViewLink}"/>
+                <br />
+                <h:commandLink action="#{employeesTableController.prepareList}" value="#{bundle.EditEmployeesTableShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmployeesTableIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

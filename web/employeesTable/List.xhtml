@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEmployeesTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEmployeesTableEmpty}" rendered="#{employeesTableController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{employeesTableController.items.rowCount > 0}">
+                    <h:outputText value="#{employeesTableController.pagination.pageFirstItem + 1}..#{employeesTableController.pagination.pageLastItem + 1}/#{employeesTableController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{employeesTableController.previous}" value="#{bundle.Previous} #{employeesTableController.pagination.pageSize}" rendered="#{employeesTableController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{employeesTableController.next}" value="#{bundle.Next} #{employeesTableController.pagination.pageSize}" rendered="#{employeesTableController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{employeesTableController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmployeesTableTitle_employeeid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.employeeid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmployeesTableTitle_efirstname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.efirstname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmployeesTableTitle_elastname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.elastname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmployeesTableTitle_ephonenum}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ephonenum}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmployeesTableTitle_eposition}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.eposition}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{employeesTableController.prepareView}" value="#{bundle.ListEmployeesTableViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{employeesTableController.prepareEdit}" value="#{bundle.ListEmployeesTableEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{employeesTableController.destroy}" value="#{bundle.ListEmployeesTableDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{employeesTableController.prepareCreate}" value="#{bundle.ListEmployeesTableCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEmployeesTableIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

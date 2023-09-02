@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRoomsTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRoomsTableLabel_roomid}" for="roomid" />
+                    <h:inputText id="roomid" value="#{roomsTableController.selected.roomid}" title="#{bundle.CreateRoomsTableTitle_roomid}" required="true" requiredMessage="#{bundle.CreateRoomsTableRequiredMessage_roomid}"/>
+                    <h:outputLabel value="#{bundle.CreateRoomsTableLabel_bednum}" for="bednum" />
+                    <h:inputText id="bednum" value="#{roomsTableController.selected.bednum}" title="#{bundle.CreateRoomsTableTitle_bednum}" required="true" requiredMessage="#{bundle.CreateRoomsTableRequiredMessage_bednum}"/>
+                    <h:outputLabel value="#{bundle.CreateRoomsTableLabel_roomtype}" for="roomtype" />
+                    <h:inputText id="roomtype" value="#{roomsTableController.selected.roomtype}" title="#{bundle.CreateRoomsTableTitle_roomtype}" required="true" requiredMessage="#{bundle.CreateRoomsTableRequiredMessage_roomtype}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{roomsTableController.create}" value="#{bundle.CreateRoomsTableSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{roomsTableController.prepareList}" value="#{bundle.CreateRoomsTableShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRoomsTableIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

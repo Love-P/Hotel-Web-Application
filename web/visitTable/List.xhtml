@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVisitTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVisitTableEmpty}" rendered="#{visitTableController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{visitTableController.items.rowCount > 0}">
+                    <h:outputText value="#{visitTableController.pagination.pageFirstItem + 1}..#{visitTableController.pagination.pageLastItem + 1}/#{visitTableController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{visitTableController.previous}" value="#{bundle.Previous} #{visitTableController.pagination.pageSize}" rendered="#{visitTableController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{visitTableController.next}" value="#{bundle.Next} #{visitTableController.pagination.pageSize}" rendered="#{visitTableController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{visitTableController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_visitid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.visitid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_visitorid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.visitorid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_employeeid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.employeeid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_roomid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.roomid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_checkindatetime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.checkindatetime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_checkoutdatetime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.checkoutdatetime}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_roomnum}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.roomnum}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVisitTableTitle_reservation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reservation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{visitTableController.prepareView}" value="#{bundle.ListVisitTableViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{visitTableController.prepareEdit}" value="#{bundle.ListVisitTableEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{visitTableController.destroy}" value="#{bundle.ListVisitTableDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{visitTableController.prepareCreate}" value="#{bundle.ListVisitTableCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVisitTableIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
